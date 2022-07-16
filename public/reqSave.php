@@ -1,5 +1,5 @@
 <?php
-include "reqUtils.php";
+include "../lib/reqUtils.php";
 
 $p_mode = $_GET['p_mode'];
 
@@ -19,4 +19,3 @@ saveFileData($_GET['p_filepath'], $DATA);
 $json['res'] = 'ok';
 
 echo json_encode($json);
-?>

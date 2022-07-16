@@ -3,14 +3,32 @@
 .folder_link {
   font-size: 20pt;
 }
+
 .book_link {
   height: 50px;
   font-size: 14pt;
 }
-a:link { color: blue; text-decoration: none; }
-a:visited { color: blue; text-decoration: none; }
-a:hover { color: red; text-decoration: underline; }
-a:active { color: red; background-color: green; }
+
+a:link {
+  color: blue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+a:active {
+  color: red;
+  background-color: green;
+}
+
 .bargraph {
   border: 1px solid gray;
   width: 100px;
@@ -20,6 +38,7 @@ a:active { color: red; background-color: green; }
   left: calc(100% - 105px);
   top: 40px;
 }
+
 .bargraph_progress {
   border: 0px;
   height: 2px;
@@ -32,14 +51,22 @@ ul {
   text-indent: 0px;
   padding-left: 0;
 }
+
 li {
   background: #ddd;
 }
-li:nth-child(even) { background: #fff; }
 
+li:nth-child(even) {
+  background: #fff;
+}
+
+hr {
+  width:100%;
+}
+/*
 @media (min-width: 600px) {
   body {
     column-count: 2;
   }
 }
-
+*/

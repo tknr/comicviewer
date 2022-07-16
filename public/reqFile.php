@@ -1,6 +1,6 @@
 <?php
-include "reqUtils.php";
-include "config.php";
+include "../lib/reqUtils.php";
+include "../lib/config.php";
 
 $p_which = $_GET['p_which'];
 $pos = strrpos($_GET['p_filepath'], "/");
@@ -97,5 +97,3 @@ if ($newFilename != "") {
 }
 
 echo json_encode($json);
-
-?>

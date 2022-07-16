@@ -3,8 +3,9 @@ body {
   background: lightgray;
   user-select: none;
   -webkit-user-select: none;
-  overflow: hidden; /* Hide scrollbars */
-} 
+  overflow: hidden;
+  /* Hide scrollbars */
+}
 
 #divPage {
   position: absolute;
@@ -23,6 +24,7 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
 .imgComics {
   border: thick #f44336;
   margin: 0px;
@@ -54,14 +56,15 @@ body {
   top: 50%;
   margin-left: -150px;
   margin-top: -150px;
-  
+
   border-radius: 10px;
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
   background: #e9fae2;
   text-align: center;
   color: rgb(0, 0, 0);
-  vertical-align: middle; 
+  vertical-align: middle;
 }
+
 #divMenu.active {
   display: block;
   padding: 0px;

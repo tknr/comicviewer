@@ -6,7 +6,7 @@ class PageHandler extends UserInput {
 
     this.imgCurrX = 0;
     this.imgCurrY = 0;
-    
+
     this.posId = 0;
     this.posCount = 0;
     this.posArray = new Array();
@@ -15,10 +15,10 @@ class PageHandler extends UserInput {
     this.image = this.ownerDiv.querySelector('img');
     this.imageWrapper = this.ownerDiv.querySelector('div');
 
-    this.image.addEventListener('load', ()=>{ this.onImageLoaded(); });
-    this.image.addEventListener('error', ()=>{ this.onImageError(); });
+    this.image.addEventListener('load', () => { this.onImageLoaded(); });
+    this.image.addEventListener('error', () => { this.onImageError(); });
 
-    this.animatorMoveBack = new Animator(0.2, 
+    this.animatorMoveBack = new Animator(0.2,
       values => { // progress
         this.dragDeltaX = values[0];
         this.dragDeltaY = values[1];
@@ -31,11 +31,11 @@ class PageHandler extends UserInput {
       }
     );
 
-    this.animatorPageMove = new Animator(0.2, 
+    this.animatorPageMove = new Animator(0.2,
       values => { // progress
         this.imgCurrX = values[0];
         this.imgCurrY = values[1];
-        this.dragDeltaX = values[2]; 
+        this.dragDeltaX = values[2];
         this.dragDeltaY = values[3];
         this.updatePosition();
       },
@@ -48,7 +48,7 @@ class PageHandler extends UserInput {
       }
     );
   }
-  
+
   onSizeChange() {
     super.onSizeChange();
     this.resetPageLayout();
@@ -58,13 +58,13 @@ class PageHandler extends UserInput {
   // | Image Load Event
   // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
   onImageError() {
-    alert('image load error:'+this.image.src);
+    alert('image load error:' + this.image.src);
   }
-  
+
   onImageLoaded() {
     this.resetPageLayout();
   }
-  
+
   // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
   // | UI Manipulation
   // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -92,41 +92,40 @@ class PageHandler extends UserInput {
 
   resetPageLayoutPortrait() {
     let naturalImageRatio = this.image.naturalWidth / this.image.naturalHeight;
-    
+
     let imgY0 = 0;
     let imgWidth = 0;
     let imgHeight = 0;
     if (this.ownerRectRatio * 2 < naturalImageRatio) {
       // if protrait height is too long
       imgWidth = this.ownerRect.width * 2;
-      imgHeight = this.image.naturalHeight / this.image.naturalWidth * (this.ownerRect.width*2);
-      imgY0 = (this.ownerRect.height - imgHeight)/2;
+      imgHeight = this.image.naturalHeight / this.image.naturalWidth * (this.ownerRect.width * 2);
+      imgY0 = (this.ownerRect.height - imgHeight) / 2;
     } else {
-      if (naturalImageRatio > this.ownerRectRatio && naturalImageRatio < 0.8)
-        {
-          imgWidth = this.ownerRect.width;
-          imgHeight = this.image.naturalHeight / this.image.naturalWidth * this.ownerRect.width;
-          imgY0 = (this.ownerRect.height - imgHeight)/2;
-        } else {
-          imgWidth = this.image.naturalWidth / this.image.naturalHeight * this.ownerRect.height;
-          imgHeight = this.ownerRect.height;
-          imgY0 = 0;
-        }
+      if (naturalImageRatio > this.ownerRectRatio && naturalImageRatio < 0.8) {
+        imgWidth = this.ownerRect.width;
+        imgHeight = this.image.naturalHeight / this.image.naturalWidth * this.ownerRect.width;
+        imgY0 = (this.ownerRect.height - imgHeight) / 2;
+      } else {
+        imgWidth = this.image.naturalWidth / this.image.naturalHeight * this.ownerRect.height;
+        imgHeight = this.ownerRect.height;
+        imgY0 = 0;
+      }
     }
 
     this.posArray = Array();
-    
+
     if (this.ownerRect.width >= imgWidth) { // screen emcompass page
-      this.posArray.push({x:(this.ownerRect.width - imgWidth)/2, y:imgY0});
+      this.posArray.push({ x: (this.ownerRect.width - imgWidth) / 2, y: imgY0 });
       this.posCount = 1;
     } else {
       this.posCount = 2;
       if (this.pageInfo.isRightToLeft()) { // i.e. Japanese
-        this.posArray.push({x:this.ownerRect.width - imgWidth, y:imgY0});
-        this.posArray.push({x:0, y:imgY0});
+        this.posArray.push({ x: this.ownerRect.width - imgWidth, y: imgY0 });
+        this.posArray.push({ x: 0, y: imgY0 });
       } else { // i.e. Korean
-        this.posArray.push({x:0, y:0});
-        this.posArray.push({x:this.ownerRect.width - imgWidth, y:imgY0});
+        this.posArray.push({ x: 0, y: 0 });
+        this.posArray.push({ x: this.ownerRect.width - imgWidth, y: imgY0 });
       }
     }
 
@@ -145,26 +144,26 @@ class PageHandler extends UserInput {
     if (naturalImageRatio < 1.0) { // single page
       imgWidth = this.ownerRect.width;
       imgHeight = this.image.naturalHeight / this.image.naturalWidth * this.ownerRect.width;
-      imgX0 = (this.ownerRect.width - imgWidth)/2;
+      imgX0 = (this.ownerRect.width - imgWidth) / 2;
 
       if (pageInfo.verticalMoveInc == -1) {
         this.posCount = 1;
         if (naturalImageRatio > this.ownerRectRatio) {
           imgWidth = this.ownerRect.width;
           imgHeight = this.image.naturalHeight / this.image.naturalWidth * this.ownerRect.width;
-          imgY0 = (this.ownerRect.height - imgHeight)/2;
-          this.posArray.push({x:0, y:imgY0});
+          imgY0 = (this.ownerRect.height - imgHeight) / 2;
+          this.posArray.push({ x: 0, y: imgY0 });
         } else {
           imgWidth = this.image.naturalWidth / this.image.naturalHeight * this.ownerRect.height;
           imgHeight = this.ownerRect.height;
-          imgX0 = (this.ownerRect.width - imgWidth)/2;
-          this.posArray.push({x:imgX0, y:0});
+          imgX0 = (this.ownerRect.width - imgWidth) / 2;
+          this.posArray.push({ x: imgX0, y: 0 });
         }
       } else {
         this.posCount = Math.ceil(imgHeight / this.ownerRect.height) + pageInfo.verticalMoveInc;
-        let deltaY = (imgHeight-this.ownerRect.height) / (this.posCount - 1);
-        for (let i=0; i<this.posCount; i++) {
-          this.posArray.push({x:imgX0, y:-i*deltaY});
+        let deltaY = (imgHeight - this.ownerRect.height) / (this.posCount - 1);
+        for (let i = 0; i < this.posCount; i++) {
+          this.posArray.push({ x: imgX0, y: -i * deltaY });
         }
       }
     } else { // two pages in one image
@@ -173,34 +172,34 @@ class PageHandler extends UserInput {
         if (naturalImageRatio > this.ownerRectRatio) {
           imgWidth = this.ownerRect.width;
           imgHeight = this.image.naturalHeight / this.image.naturalWidth * this.ownerRect.width;
-          imgY0 = (this.ownerRect.height - imgHeight)/2;
-          this.posArray.push({x:0, y:imgY0});
+          imgY0 = (this.ownerRect.height - imgHeight) / 2;
+          this.posArray.push({ x: 0, y: imgY0 });
         } else {
           imgWidth = this.image.naturalWidth / this.image.naturalHeight * this.ownerRect.height;
           imgHeight = this.ownerRect.height;
-          imgX0 = (this.ownerRect.width - imgWidth)/2;
-          this.posArray.push({x:imgX0, y:0});
+          imgX0 = (this.ownerRect.width - imgWidth) / 2;
+          this.posArray.push({ x: imgX0, y: 0 });
         }
       } else {
         imgWidth = this.ownerRect.width * 2;
-        imgHeight = this.image.naturalHeight / this.image.naturalWidth * (this.ownerRect.width*2);
+        imgHeight = this.image.naturalHeight / this.image.naturalWidth * (this.ownerRect.width * 2);
 
         let rowCount = Math.ceil(imgHeight / this.ownerRect.height) + pageInfo.verticalMoveInc;
         this.posCount = rowCount * 2;
-        let deltaY = (imgHeight-this.ownerRect.height) / (rowCount - 1);
-  
+        let deltaY = (imgHeight - this.ownerRect.height) / (rowCount - 1);
+
         if (this.pageInfo.isRightToLeft()) { // i.e. Japanese
-          imgX0 = this.ownerRect.width*(-1);
+          imgX0 = this.ownerRect.width * (-1);
           imgX1 = 0;
         } else {
           imgX0 = 0;
-          imgX1 = this.ownerRect.width*(-1);
+          imgX1 = this.ownerRect.width * (-1);
         }
-        for (let i=0; i<rowCount; i++) {
-          this.posArray.push({x:imgX0, y:-i*deltaY});
+        for (let i = 0; i < rowCount; i++) {
+          this.posArray.push({ x: imgX0, y: -i * deltaY });
         }
-        for (let i=rowCount; i<this.posCount; i++) {
-          this.posArray.push({x:imgX1, y:-(i-rowCount)*deltaY});
+        for (let i = rowCount; i < this.posCount; i++) {
+          this.posArray.push({ x: imgX1, y: -(i - rowCount) * deltaY });
         }
       }
     }
@@ -208,7 +207,7 @@ class PageHandler extends UserInput {
   }
 
   resetPageLayoutApply(imgWidth, imgHeight) {
-    this.posId = (this.shouldStartAtInitialPosition) ? 0 : this.posCount-1;
+    this.posId = (this.shouldStartAtInitialPosition) ? 0 : this.posCount - 1;
 
     this.image.width = imgWidth;
     this.image.height = imgHeight;
@@ -222,10 +221,10 @@ class PageHandler extends UserInput {
     this.imageWrapper.style.width = imgWidth + 'px';
     this.imageWrapper.style.height = imgHeight + 'px';
   }
-  
+
   goPage(dir) {
-    if (dir)  { if (this.pageInfo.isRightToLeft()) this.goNextPage(); else this.goPrevPage(); }
-    else      { if (this.pageInfo.isRightToLeft()) this.goPrevPage(); else this.goNextPage(); }
+    if (dir) { if (this.pageInfo.isRightToLeft()) this.goNextPage(); else this.goPrevPage(); }
+    else { if (this.pageInfo.isRightToLeft()) this.goPrevPage(); else this.goNextPage(); }
   }
 
   goPrevPage() {
@@ -295,7 +294,7 @@ class PageHandler extends UserInput {
     //alert(e.keyCode);
     if (e.keyCode == 32) { // Space
       this.goNextPage();
-      e.preventDefault(); 
+      e.preventDefault();
     } else if (e.keyCode == 37) { // Left
       this.goPage(true);
     } else if (e.keyCode == 39) { // Right
@@ -304,5 +303,5 @@ class PageHandler extends UserInput {
       openFullscreen();
       this.pageInfo.show(true);
     }
-  }  
+  }
 }

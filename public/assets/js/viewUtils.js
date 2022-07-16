@@ -14,11 +14,11 @@ class UserInput {
     this.isTouchDevice = ('ontouchstart' in document.documentElement);
     if (this.isTouchDevice) {
       this.ownerDiv.addEventListener('touchstart', e => { this.inputDown(e); }, true);
-      this.ownerDiv.addEventListener('touchmove', e => { this.inputMove(e); }, {passive: false});
+      this.ownerDiv.addEventListener('touchmove', e => { this.inputMove(e); }, { passive: false });
       this.ownerDiv.addEventListener('touchend', e => { this.inputUp(e); }, true);
     } else {
       this.ownerDiv.addEventListener('mousedown', e => { this.inputDown(e); }, true);
-      this.ownerDiv.addEventListener('mousemove', e => { this.inputMove(e); }, {passive: false});
+      this.ownerDiv.addEventListener('mousemove', e => { this.inputMove(e); }, { passive: false });
       this.ownerDiv.addEventListener('mouseup', e => { this.inputUp(e); }, true);
     }
     document.addEventListener('keydown', e => { this.inputKeyDown(e); }, true);
@@ -38,7 +38,7 @@ class UserInput {
     this.inputIsDown = false;
   }
 
-  inputKeyDown(e) {}
+  inputKeyDown(e) { }
 
   onSizeChange() {
     this.ownerRect = this.ownerDiv.getBoundingClientRect();
@@ -113,21 +113,21 @@ function openFullscreen() {
 
 function exitFullScreen() {
   if (document.exitFullscreen) {
-      document.exitFullscreen();
+    document.exitFullscreen();
   } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
+    document.webkitExitFullscreen();
   } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
+    document.mozCancelFullScreen();
   } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
+    document.msExitFullscreen();
   }
 }
 
 function isFullScreen() {
   var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-      (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-      (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-      (document.msFullscreenElement && document.msFullscreenElement !== null);
+    (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+    (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+    (document.msFullscreenElement && document.msFullscreenElement !== null);
   return isInFullScreen;
 }
 
@@ -151,7 +151,7 @@ class Animator {
     this.values0 = values0;
     this.values1 = values1;
     this.deltaValue = new Array(this.values0.length);
-    for (let i=0; i<this.values0.length; i++) {
+    for (let i = 0; i < this.values0.length; i++) {
       this.deltaValue[i] = this.values1[i] - this.values0[i];
     }
     this.valuesInProgress = new Array(this.values0.length);
@@ -164,7 +164,7 @@ class Animator {
     if (timestamp - this.timestamp0 < this.duration) {
       let progress = (timestamp - this.timestamp0) / this.duration;
       if (this.handleProgress) {
-        for (let i=0; i<this.values0.length; i++) {
+        for (let i = 0; i < this.values0.length; i++) {
           this.valuesInProgress[i] = this.deltaValue[i] * progress + this.values0[i];
         }
         this.handleProgress(this.valuesInProgress);
@@ -183,6 +183,6 @@ class Animator {
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-      results = regex.exec(location.search);
+    results = regex.exec(location.search);
   return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }

@@ -28,7 +28,7 @@ class PageBar extends UserInput {
   setActive(isActive) {
     this.isActive = isActive;
   }
-  
+
   toggleActive() {
     this.isActive = this.isActive ? false : true;
     this.draw();
@@ -62,31 +62,31 @@ class PageBar extends UserInput {
 
   // Draw
   draw() {
-    let navHeight = this.isDown ?  PageBarHeight : PageBarHeightNormal;
+    let navHeight = this.isDown ? PageBarHeight : PageBarHeightNormal;
     let navY = this.canvas.height - navHeight;
 
     let ctx = this.canvas.getContext("2d");
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     // Draw current position
-    const {x,w} = this.pageInfo.getXW(this.canvas.width);  
+    const { x, w } = this.pageInfo.getXW(this.canvas.width);
     ctx.beginPath();
     ctx.fillStyle = this.isDown || this.isActive ? "#ff0000ff" : "#ff000050";
     ctx.fillRect(x, navY, w, navHeight);
 
     // Draw Sections
-    ctx.strokeStyle = this.isDown || this.isActive ? "#000000" :  "#00000040";
+    ctx.strokeStyle = this.isDown || this.isActive ? "#000000" : "#00000040";
     ctx.fillStyle = this.isDown || this.isActive ? "#aaffaa90" : "#aaffaa50";
-    this.pageInfo.getSectionXW(this.canvas.width, (x,w,onOff) => {
+    this.pageInfo.getSectionXW(this.canvas.width, (x, w, onOff) => {
       ctx.moveTo(x, navY);
-      ctx.lineTo(x, navY+navHeight);
+      ctx.lineTo(x, navY + navHeight);
       if (onOff) {
         ctx.fillRect(x, navY, w, navHeight);
       }
     });
 
     // Draw Box
-    ctx.strokeRect(0.5, navY, this.canvas.width-1, navHeight-1.5);
+    ctx.strokeRect(0.5, navY, this.canvas.width - 1, navHeight - 1.5);
 
     ctx.closePath()
     ctx.stroke();

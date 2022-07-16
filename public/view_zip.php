@@ -1,5 +1,5 @@
 <?
-include "config.php";
+include "../lib/config.php";
 
 $za = new ZipArchive();
 
@@ -34,17 +34,17 @@ for ($i=0; $i<$za->numFiles;$i++) {
     //echo "index: $i : $str <br>\n";
     //echo "index: $i : $converted_str <br>\n";
 
-    $pos = strrpos($array[name], "/");
-    $path = substr($array[name], 0, $pos);
+    $pos = strrpos($array['name'], "/");
+    $path = substr($array['name'], 0, $pos);
 
     echo "<tr>";
-    echo "<td>" . $array[index] ."</td>";
-    echo "<td>" . $array[name] ."</td>";
+    echo "<td>" . $array['index'] ."</td>";
+    echo "<td>" . $array['name'] ."</td>";
     echo "<td>" . $path ."</td>";
-    echo "<td>" . $array[size] ."</td>";
+    echo "<td>" . $array['size'] ."</td>";
     echo "</tr>";
 
-    $DATA[$array[name]] = $array;
+    $DATA[$array['name']] = $array;
 }
 echo "</table>";
 echo "numFile:" . $za->numFiles . "\n";
@@ -54,10 +54,9 @@ ksort($DATA);
 echo "<table border=1 cellspacing=0 cellpadding=0>";
 foreach($DATA as $key => $array) {
   echo "<tr>";
-  echo "<td>" . $array[index] ."</td>";
-  echo "<td>" . $array[name] ."</td>";
-  echo "<td>" . $array[size] ."</td>";
+  echo "<td>" . $array['index'] ."</td>";
+  echo "<td>" . $array['name'] ."</td>";
+  echo "<td>" . $array['size'] ."</td>";
   echo "</tr>";
 }
 echo "</table>";
-?>

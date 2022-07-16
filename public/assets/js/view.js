@@ -6,7 +6,7 @@ let pageHandler = new PageHandler('divPage', pageInfo);
 let pageBar = new PageBar('divPageBar', pageInfo);
 
 pageInfo.setOnPageChange(
-  ( pFilename, pPageIndex, shouldStartAtFirstPosition, displayPageIndex, displayPageCount ) => {
+  (pFilename, pPageIndex, shouldStartAtFirstPosition, displayPageIndex, displayPageCount) => {
     pageHandler.loadPage(pFilename, pPageIndex, shouldStartAtFirstPosition);
     let display = document.getElementById('divDisplayPage');
     display.innerHTML = `${displayPageIndex} / ${displayPageCount}`;
@@ -17,7 +17,7 @@ pageInfo.setOnPageChange(
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 // | Assign Event Listener
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-document.addEventListener('fullscreenchange', ()=>{
+document.addEventListener('fullscreenchange', () => {
   if (document.fullscreenElement) {
     console.log(`Element: ${document.fullscreenElement.id} entered full-screen mode.`);
     console.log(document.fullscreenElement);
@@ -28,31 +28,31 @@ document.addEventListener('fullscreenchange', ()=>{
   pageHandler.onSizeChange();
 });
 
-window.addEventListener("beforeunload", ()=>{pageInfo.save();});
-window.addEventListener("dragstart", ()=>{ return false; } );
-window.addEventListener("resize", ()=>{ 
+window.addEventListener("beforeunload", () => { pageInfo.save(); });
+window.addEventListener("dragstart", () => { return false; });
+window.addEventListener("resize", () => {
   pageBar.onSizeChange();
   pageHandler.onSizeChange();
 }, false);
 
-document.querySelector('#btnFullscreen').addEventListener('click', e=>{
+document.querySelector('#btnFullscreen').addEventListener('click', e => {
   closeMenu(e);
   toggleFullScreen();
   pageInfo.needsPageChange(true);
 });
 
-document.querySelector('#btnEnableNav').addEventListener('click', e=>{
+document.querySelector('#btnEnableNav').addEventListener('click', e => {
   closeMenu(e);
   pageBar.toggleActive();
 });
 
-document.querySelector('#btnChangeDir').addEventListener('click', e=>{
+document.querySelector('#btnChangeDir').addEventListener('click', e => {
   closeMenu(e);
   pageInfo.toggleDirection();
 });
 
 document.querySelectorAll('#divMenu .small_button').forEach((btn, index) => {
-  btn.addEventListener('click', e=>{
+  btn.addEventListener('click', e => {
     document.querySelectorAll('#divMenu .small_button').forEach(btn => btn.classList.remove('selected'));
     btn.classList.add('selected');
     pageInfo.setVerticalMoveInc(btn.getAttribute('data-inc'));
@@ -60,13 +60,13 @@ document.querySelectorAll('#divMenu .small_button').forEach((btn, index) => {
   });
 });
 
-document.querySelector('#btnExit').addEventListener('click', e=>{
+document.querySelector('#btnExit').addEventListener('click', e => {
   closeMenu(e);
   exitFullScreen();
   pageInfo.saveAndExit();
 });
 
-document.querySelector('#divMenuButton').addEventListener('click', e=>{
+document.querySelector('#divMenuButton').addEventListener('click', e => {
   if (document.querySelector('#divMenu').classList.contains('active')) {
     closeMenu(e);
   } else {
