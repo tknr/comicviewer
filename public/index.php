@@ -2,54 +2,8 @@
 <head>
 <title>Comic Viewer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<link rel="shortcut icon" type="image/png" sizes="16x16"  href="comics.png"/>
-<style type="text/css">
-/* body { margin: 0px; }  */
-
-.folder_link {
-  font-size: 20pt;
-}
-.book_link {
-  height: 50px;
-  font-size: 14pt;
-}
-a:link { color: blue; text-decoration: none; }
-a:visited { color: blue; text-decoration: none; }
-a:hover { color: red; text-decoration: underline; }
-a:active { color: red; background-color: green; }
-.bargraph {
-  border: 1px solid gray;
-  width: 100px;
-  height: 2px;
-  display: flex;
-  position: relative;
-  left: calc(100% - 105px);
-  top: 40px;
-}
-.bargraph_progress {
-  border: 0px;
-  height: 2px;
-  background: red;
-}
-
-ul {
-  list-style-type: none;
-  list-style-position: inside;
-  text-indent: 0px;
-  padding-left: 0;
-}
-li {
-  background: #ddd;
-}
-li:nth-child(even) { background: #fff; }
-
-@media (min-width: 600px) {
-  body {
-    column-count: 2;
-  }
-}
-
-</style>
+<link rel="shortcut icon" type="image/png" sizes="16x16"  href="assets/images/comics.png"/>
+<link href="assets/css/index.css" rel="stylesheet">
 <script>
 </script>
 </head>

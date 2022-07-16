@@ -5,8 +5,8 @@ $v = time();
 <head>
 <title>Comic Viewer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="shortcut icon" type="image/png" sizes="16x16" href="comics.png" />
-<link href="view.css?v=<?=$v?>" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" sizes="16x16" href="assets/images/comics.png" />
+<link href="assets/css/view.css?v=<?=$v?>" rel="stylesheet">
 <script src="viewUtils.js?v=<?=$v?>"></script>
 <script src="viewPageInfo.js?v=<?=$v?>"></script>
 <script src="viewPageHandler.js?v=<?=$v?>"></script>

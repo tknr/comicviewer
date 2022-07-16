@@ -18,3 +18,5 @@ Web-based zip-compressed comic viewer
 2. Touch to move page forward. Swipe back to move backward.
 3. Touch right upper corner to open the menu.
 
+# ref
+サイトにアップした漫画を読みやすくするライブラリ - Qiita https://qiita.com/tomalatte001/items/0eed1444c12a9ce71765
