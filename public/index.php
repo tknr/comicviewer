@@ -4,8 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="shortcut icon" type="image/png" sizes="16x16"  href="assets/images/comics.png"/>
 <link href="assets/css/index.css" rel="stylesheet">
-<script>
-</script>
 </head>
 <body>
 <?php

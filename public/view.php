@@ -7,10 +7,6 @@ $v = time();
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="shortcut icon" type="image/png" sizes="16x16" href="assets/images/comics.png" />
 <link href="assets/css/view.css?v=<?=$v?>" rel="stylesheet">
-<script src="viewUtils.js?v=<?=$v?>"></script>
-<script src="viewPageInfo.js?v=<?=$v?>"></script>
-<script src="viewPageHandler.js?v=<?=$v?>"></script>
-<script src="viewPageBar.js?v=<?=$v?>"></script>
 </head>
 <body ondragstart="return false" ondrop="return false" oncopy="return false" oncut="return false" onpaste="return false">
 
@@ -39,7 +35,11 @@ $v = time();
 </div>
 
 <!-- Script -->
-<script src="view.js?v=<?=$v?>"></script>
+<script src="assets/js/viewUtils.js?v=<?=$v?>"></script>
+<script src="assets/js/viewPageInfo.js?v=<?=$v?>"></script>
+<script src="assets/js/viewPageHandler.js?v=<?=$v?>"></script>
+<script src="assets/js/viewPageBar.js?v=<?=$v?>"></script>
+<script src="assets/js/view.js?v=<?=$v?>"></script>
 
 </body>
 </html>
