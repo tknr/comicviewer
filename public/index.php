@@ -51,7 +51,7 @@
   if (isset($listDirs)) {
     sort($listDirs, SORT_NATURAL);
     foreach ($listDirs as $filename) {
-      echo "<li><div><a class=\"folder_link\" href=\"index.php?p_dir=" . urlencode($_GET['p_dir'] . $filename . "/") . "\">📂 " . $filename . "</a></div></li>";
+      echo "<li><div><a class=\"folder_link\" href=\"index.php?p_dir=" . urlencode($_GET['p_dir'] . $filename . "/") . "\">📁 " . $filename . "</a></div></li>";
     }
   }
 
