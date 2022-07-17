@@ -2,30 +2,32 @@
 
 .folder_link {
   font-size: 20pt;
+  font-weight: 100;
 }
 
 .book_link {
   height: 50px;
   font-size: 14pt;
+  font-weight: 100;
 }
 
 a:link {
-  color: blue;
+  color: black;
   text-decoration: none;
 }
 
 a:visited {
-  color: blue;
+  color: black;
   text-decoration: none;
 }
 
 a:hover {
-  color: red;
+  color: black;
   text-decoration: underline;
 }
 
 a:active {
-  color: red;
+  color: black;
   background-color: green;
 }
 
@@ -63,6 +65,7 @@ li:nth-child(even) {
 hr {
   width:100%;
 }
+
 /*
 @media (min-width: 600px) {
   body {

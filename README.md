@@ -20,3 +20,4 @@ Web-based zip-compressed comic viewer
 
 # ref
 サイトにアップした漫画を読みやすくするライブラリ - Qiita https://qiita.com/tomalatte001/items/0eed1444c12a9ce71765
+Material Symbols guide  |  Google Fonts  |  Google Developers https://developers.google.com/fonts/docs/material_symbols#use_in_web

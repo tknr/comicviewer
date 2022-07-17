@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" type="image/png" sizes="16x16" href="assets/images/comics.png" />
   <link href="assets/css/index.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 
   // Upper Dirs
   $curr_dir_title = "";
-  echo "<a class=\"folder_link\" href=\"index.php\">🏠</a>";
+  echo "<a class=\"folder_link\" href=\"index.php\"><span class=\"material-symbols-outlined\">home</span></a>";
   if (array_key_exists('p_dir', $_GET)) {
     $upperDirs = explode("/", $_GET['p_dir']);
     $dl = "";
@@ -51,7 +52,7 @@
   if (isset($listDirs)) {
     sort($listDirs, SORT_NATURAL);
     foreach ($listDirs as $filename) {
-      echo "<li><div><a class=\"folder_link\" href=\"index.php?p_dir=" . urlencode($_GET['p_dir'] . $filename . "/") . "\">📁 " . $filename . "</a></div></li>";
+      echo "<li><div><a class=\"folder_link\" href=\"index.php?p_dir=" . urlencode($_GET['p_dir'] . $filename . "/") . "\"><span class=\"material-symbols-outlined\">folder</span> " . $filename . "</a></div></li>";
     }
   }
 
