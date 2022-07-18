@@ -26,7 +26,7 @@
     if (is_dir($dirBase . $filename)) {
       $listDirs[] = $filename;
     } else {
-      if (substr($filename, -3) != "zip") continue;
+      if (substr($filename, -3) != "zip" && substr($filename, -3) != "pdf") continue;
       $listFiles[] = $filename;
     }
   }
@@ -72,15 +72,23 @@
         $PAGE_INFO = "";
       }
 
-
       $p_filename = urlencode($_GET['p_dir'] . $filename);
       $filename = str_replace($curr_dir_title, "", $filename);
-      $filename = str_replace(".zip", "", $filename);
+      if(substr($filename, -3) === "zip"){
       echo "<li>"
         . "<div>"
         . $PAGE_INFO
         . "<a href=\"view.php?p_filename=$p_filename\"><div class=\"book_link\">$filename</div></a>"
         . "</div>\n";
+      }
+      if(substr($filename, -3) === "pdf"){
+        echo "<li>"
+          . "<div>"
+          . $PAGE_INFO
+          . "<a href=\"pdf.php?p_filename=$p_filename\"><div class=\"book_link\">$filename</div></a>"
+          . "</div>\n";
+        }
+
     }
   }
   echo "</ul>";
