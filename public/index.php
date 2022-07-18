@@ -6,6 +6,7 @@
   <link rel="shortcut icon" type="image/png" sizes="16x16" href="assets/images/comics.png" />
   <link href="assets/css/index.css" rel="stylesheet">
   <link href="//fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
 </head>
 
 <body>

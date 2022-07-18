@@ -8,6 +8,7 @@ $v = time();
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" type="image/png" sizes="16x16" href="assets/images/comics.png" />
   <link href="assets/css/view.css?v=<?= $v ?>" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
 </head>
 
 <body ondragstart="return false" ondrop="return false" oncopy="return false" oncut="return false" onpaste="return false">
