@@ -36,23 +36,3 @@ function showimageIndex($zip_file, $file_index) {
 
   return true;
 }
-
-function showimageName($zip_file, $file_name) {
-  $z = new ZipArchive();
-  if ($z->open($zip_file) !== true) {
-      echo "File not found.";
-      return false;
-  }
-
-  $stat = $z->statName($file_name);
-  $fp   = $z->getStream($file_name);
-  if(!$fp) {
-      echo "Could not load image.";
-      return false;
-  }
-
-  header('Content-Type: image/jpeg');
-  header('Content-Length: ' . $stat['size']);
-  fpassthru($fp);
-  return true;
-}
