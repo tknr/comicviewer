@@ -9,7 +9,7 @@ pageInfo.setOnPageChange(
   (pFilename, pPageIndex, shouldStartAtFirstPosition, displayPageIndex, displayPageCount) => {
     pageHandler.loadPage(pFilename, pPageIndex, shouldStartAtFirstPosition);
     let display = document.getElementById('divDisplayPage');
-    display.innerHTML = `${displayPageIndex} / ${displayPageCount}`;
+    display.innerHTML = `${displayPageIndex} / ${displayPageCount}<br />${pFilename}`;
     pageBar.draw();
   }
 );
